@@ -36,4 +36,7 @@ return view('posts/show',["singlepost"=>$singlepost]);
     }
 
 
+
+
+
 }

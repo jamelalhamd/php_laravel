@@ -1,35 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
 
 
 
-  
+@extends('layout.nave')
+
+@section('title') Index @endsection
 <div class="container">
+  @section('content')
 
-
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Jamel </a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">All Post</a></li>
-    
-      </ul>
-      <div class="container mt-5  text-center"><div class="text-left"> <button type="button" class="btn btn-success">Create Post</button></div></div>
-    </div>
-   
-  </nav>
+  <div class="text-right">
+    <button type="button" class="btn btn-success">Create Post</button>
+</div>
 
 
   
@@ -56,9 +36,12 @@
           <td>{{$post['title']}}</td>
           <td>{{$post['Posted_by']}}</td>
           <th>{{$post['Created_at']}}</th>
-          <td><button type="button" class="btn btn-primary">Update</button>
+          <td><button type="button" class="btn btn-primary" >Update</button>
             <button type="button" class="btn btn-danger">Delete</button>
-            <button type="button" class="btn btn-info">View</button></td>
+          <!--  <a href="{{ route('post.show',$post['id']) }}" class="btn btn-info">View a</a> -->
+
+            <button type="button" class="btn btn-info" onclick="window.location='/post/{{$post['id']}}'">View</button>
+</td>
         </tr>
         @endforeach
       </tbody>
@@ -72,5 +55,6 @@
   
   </div>
  </div>
-</body>
-</html>
+
+
+@endsection
