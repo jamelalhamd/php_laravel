@@ -8,7 +8,8 @@
   @section('content')
 
   <div class="text-right">
-    <button type="button" class="btn btn-success">Create Post</button>
+    <button type="button" onclick="window.location='{{ route('post.create') }}'" class="btn btn-success">Create Post</button>
+  </div>
 </div>
 
 
@@ -36,11 +37,17 @@
           <td>{{$post['title']}}</td>
           <td>{{$post['Posted_by']}}</td>
           <th>{{$post['Created_at']}}</th>
-          <td><button type="button" class="btn btn-primary" >Update</button>
-            <button type="button" class="btn btn-danger">Delete</button>
-          <!--  <a href="{{ route('post.show',$post['id']) }}" class="btn btn-info">View a</a> -->
+          <td>
+         
+          
+            
+            <a href="{{ route('post.edit',$post['id']) }}" class="btn btn-primary">Edit </a> 
+            <a href="{{ route('post.show',$post['id']) }}" class="btn btn-info">View </a> 
+            <a href="{{ route('post.create',$post['id']) }}" class="btn btn-danger">Delete </a> 
+        
 
-            <button type="button" class="btn btn-info" onclick="window.location='/post/{{$post['id']}}'">View</button>
+
+
 </td>
         </tr>
         @endforeach

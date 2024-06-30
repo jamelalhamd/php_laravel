@@ -35,8 +35,33 @@ return view('posts/show',["singlepost"=>$singlepost]);
 
     }
 
+public function create()
+{
+
+return view('posts/create');
 
 
+}
+
+public function store()
+{
+ $data1=$_POST;
+  $data=request()->all();
+   $title=$data['title'];
+   $description=request()->description;
+   //  $created_at=request()->created_at;
+   $created_at=$data['creater'];
+     
+return to_route('post.index',['postid'=>$data]);
+
+}
+
+public function edit()
+{
+
+return view('posts.edit');
+
+}
 
 
 }
