@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Indexcontoller;
-use App\Http\Controllers\Jameltestcontroler;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -11,5 +11,6 @@ Route::get('/', function () {
 
 
 Route::get('/post',[Indexcontoller::class,'index']);
-Route::get('/test',[Jameltestcontroler::class,'testjamel']);
+Route::get('/post/{post}',[Indexcontoller::class,'show']);
+
 

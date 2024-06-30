@@ -23,7 +23,17 @@ class Indexcontoller extends Controller
         return view('posts/index',['allpost'=>$allpost]);
     }
 
+    public function show ($postid) {
 
+        $singlepost=[
+            'id'=>  1,'title'=>'PHP','Posted_by'=>"jamele",'Created_at'=>'2014-10-12'   ];
+        
+    
+        
+
+return view('posts/show',["singlepost"=>$singlepost]);
+
+    }
 
 
 }
