@@ -1,26 +1,30 @@
-@extends('layout/nave')
+@extends('layout.nave')
 
-@section('title') Create Post @endsection
+@section('title') Edit Post @endsection
+
 @section('content')
+<div class="container mt-5">
+    <h2>Edit Post</h2>
+    <form method="POST" action="{{ route('post.update', 1) }}">
+        @csrf
+        @method('PUT') <!-- Assuming this is for updating an existing post -->
 
-<form method="post" action="{{route('post.edit')}}">
-    @csrf
-    <div class="mb-3">
-        <label for="pwd1" class="form-label">Title</label>
-        <input type="text" class="form-control" id="pwd1" placeholder="Enter Title" name="title">
-      </div>
-    <div> 
-        <label for="comment">Description:</label>
-<textarea class="form-control" rows="5" id="comment" name="description"></textarea>
-    </div>
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title" value="{{ old('title') }}">
+        </div>
 
-    <div class="mb-3">
-        <label for="pwd" class="form-label">Creater by:</label>
-        <input type="text" class="form-control" id="pwd" placeholder="Enter creator" name="creater">
-      </div>
-    <button type="submit" class="btn btn-primary">Edit</button>
-  </form>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" rows="5" id="description" name="description">{{ old('description') }}</textarea>
+        </div>
 
-  
+        <div class="mb-3">
+            <label for="creator" class="form-label">Created by:</label>
+            <input type="text" class="form-control" id="creator" placeholder="Enter creator" name="creator" value="{{ old('creator') }}">
+        </div>
 
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+</div>
 @endsection

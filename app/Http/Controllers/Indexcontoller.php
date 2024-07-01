@@ -56,12 +56,28 @@ return to_route('post.index',['postid'=>$data]);
 
 }
 
-public function edit()
+
+
+public function edit( )
 {
-
-return view('posts.edit');
-
+    return view('posts/edit');
 }
 
+public function update()
+{
+
+    
+   $data=request()->all();
+    $title=request()->title;
+     $description=request()->description;
+    $creator=request()->creator;
+ 
+
+
+
+
+
+   return to_route('posts.show',1);
+}
 
 }

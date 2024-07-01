@@ -11,12 +11,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('/post',[Indexcontoller::class,'index'])->name('post.index');
-Route::post('post',[Indexcontoller::class,'store'])->name('post.store');
-Route::get('post/create',[Indexcontoller::class,'create'])->name('post.create');
-Route::get('post/edit',[Indexcontoller::class,'edit'])->name('post.edit');
-Route::get('post/{post}',[Indexcontoller::class,'show'])->name('post.show');
+Route::get('/posts',[Indexcontoller::class,'index'])->name('post.index');
+Route::post('/posts',[Indexcontoller::class,'store'])->name('post.store');
+Route::get('/posts/create',[Indexcontoller::class,'create'])->name('post.create');
 
+Route::get('/posts/{post}/edit',[Indexcontoller::class, 'edit'])->name('post.edit');
+Route::get('/posts/{post}',[Indexcontoller::class,'show'])->name('post.show');
+Route::put('/posts/{post}',[Indexcontoller::class,'update'])->name('post.update');
 
 
 
