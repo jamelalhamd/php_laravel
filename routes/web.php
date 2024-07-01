@@ -18,6 +18,6 @@ Route::get('/posts/create',[Indexcontoller::class,'create'])->name('post.create'
 Route::get('/posts/{post}/edit',[Indexcontoller::class, 'edit'])->name('post.edit');
 Route::get('/posts/{post}',[Indexcontoller::class,'show'])->name('post.show');
 Route::put('/posts/{post}',[Indexcontoller::class,'update'])->name('post.update');
-
+Route::delete('/posts/{post}',[Indexcontoller::class,'delete'])->name('post.delete');
 
 

@@ -43,9 +43,18 @@
             
             <a href="{{ route('post.edit',$post['id']) }}" class="btn btn-primary">Edit </a> 
             <a href="{{ route('post.show',$post['id']) }}" class="btn btn-info">View </a> 
-            <a href="{{ route('post.create',$post['id']) }}" class="btn btn-danger">Delete </a> 
+            <form style="display: inline;" method="POST" action="{{ route('post.delete', $post['id']) }}">
+              @csrf
+              @method('DELETE')
+              <script type="text/javascript">
+                function confirmDelete() {
+                    return confirm('Are you sure you want to delete this post?');
+                }
+            </script>
+              <button type="submit" onclick="confirmDelete()"   class="btn btn-danger">Delete</button>
+          </form>
         
-
+      
 
 
 </td>

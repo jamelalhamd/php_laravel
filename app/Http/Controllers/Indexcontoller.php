@@ -77,7 +77,20 @@ public function update()
 
 
 
-   return to_route('posts.show',1);
+   return to_route('post.show',1);
 }
+
+public function delete()
+{
+
+
+
+
+  return to_route('post.index');
+
+
+
+}
+
 
 }
