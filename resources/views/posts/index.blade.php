@@ -23,20 +23,22 @@
           <th>#</th>
           <th>Title</th>
           <th>Posted by</th>
+          <th>Description</th>
           <th>Created At</th>
           <th>Action :</th>
         </tr>
       </thead>
       <tbody>
   
-        @foreach ($allpost as $post)
+        @foreach ($posts as $post)
         <tr>
         
           <td>{{$post['id']}}</td>
         
           <td>{{$post['title']}}</td>
-          <td>{{$post['Posted_by']}}</td>
-          <th>{{$post['Created_at']}}</th>
+          <td>{{$post['description']}}</td>
+          <td>{{$post['creater']}}</td>
+          <th>{{$post['created_at']}}</th>
           <td>
          
           

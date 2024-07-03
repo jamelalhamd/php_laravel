@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class Indexcontoller extends Controller
@@ -9,27 +10,26 @@ class Indexcontoller extends Controller
     //
    public function index () {
    
-     $allpost=[
-        ['id'=>  1,'title'=>'PHP','Posted_by'=>"jamele",'Created_at'=>'2014-10-12'   ],
-        ['id'=>  4,'title'=>'C','Posted_by'=>"jamelg",'Created_at'=>'2014-10-12'   ],
-        ['id'=>  5,'title'=>'jave','Posted_by'=>"jamedl",'Created_at'=>'2014-10-12'   ],
-        ['id'=>  8,'title'=>'C#','Posted_by'=>"jamel7",'Created_at'=>'2014-10-12'   ],
-        ['id'=>  10,'title'=>'c++','Posted_by'=>"jamel5",'Created_at'=>'2014-10-12'   ]
+    $postfromDb=Post::all();
+ 
+    
+    
 
-
-
-     ];
-
-        return view('posts/index',['allpost'=>$allpost]);
+        return view('posts/index',['posts'=>$postfromDb]);
     }
 
     public function show ($postid) {
 
-        $singlepost=[
-            'id'=>  1,'title'=>'PHP','Posted_by'=>"jamele",'Created_at'=>'2014-10-12'   ];
-        
+
+        //public function show (Post $singlepost) {
+        $singlepost=Post::find($postid);
+        //$singlepost=Post::where('id',$postid)->first();
     
-        
+        //$singlepost=Post::where('id',$postid)->get();
+
+
+       // $singlepost=Post::findOrFail($postid);
+        if(is_null($singlepost)) { return to_route('post.index');}
 
 return view('posts/show',["singlepost"=>$singlepost]);
 
@@ -38,6 +38,9 @@ return view('posts/show',["singlepost"=>$singlepost]);
 public function create()
 {
 
+
+
+
 return view('posts/create');
 
 
@@ -45,39 +48,64 @@ return view('posts/create');
 
 public function store()
 {
- $data1=$_POST;
+
+  $Post=new Post() ;
   $data=request()->all();
-   $title=$data['title'];
-   $description=request()->description;
-   //  $created_at=request()->created_at;
-   $created_at=$data['creater'];
+  $Post->title=request()->title;
+  $Post->description=request()->description;
+  $Post->creater=request()->creater;
+
+  $Post->save();//insert all
+
+
+  $data1=$_POST;
+
+
+
+  
+
+
+
+  
      
-return to_route('post.index',['postid'=>$data]);
+return to_route('post.index');
 
 }
 
 
 
-public function edit( )
+public function edit($id )
 {
-    return view('posts/edit');
+    $postfromDb=Post::find($id);
+
+  
+    return view('posts/edit',['post'=>$postfromDb]);
+
 }
 
-public function update()
+public function update($id)
 {
 
     
-   $data=request()->all();
+    $data=request()->all();
     $title=request()->title;
      $description=request()->description;
-    $creator=request()->creator;
- 
+    $creater=request()->creater;
+
+    $post = Post::findOrFail($id);
+    
+    // Update the post properties
+    $post->title = request()->title;
+    $post->description = request()->description;
+    $post->creater = request()->creater; // Ensure 'creator' is the correct column name
+
+    // Save the changes to the database
+    $post->save();
 
 
 
 
-
-   return to_route('post.show',1);
+   return to_route('post.show',$id);
 }
 
 public function delete()

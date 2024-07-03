@@ -16,7 +16,7 @@
 
     <div class="mb-3">
         <label for="pwd" class="form-label">Creater by:</label>
-        <input type="text" class="form-control" id="pwd" placeholder="Enter creator" name="creater">
+        <input type="text" class="form-control" id="pwd" placeholder="Enter creater" name="creater">
       </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
