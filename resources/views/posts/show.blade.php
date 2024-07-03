@@ -13,8 +13,8 @@
         </div>
         <div class="card-body">
 
-            <h5 class="card-title">Title: {{ $singlepost['title'] }}</h5>
-            <p class="card-text">ID: {{ $singlepost['id'] }}</p>
+            <h4 class="card-title">Title : {{ $singlepost['title'] }}</h4>
+            <h5 class="card-text">ID: {{ $singlepost['id'] }}</h5>
         </div>
     </div>
 
@@ -24,8 +24,8 @@
             Post Creator Information
         </div>
         <div class="card-body">
-            <h5 class="card-title">{{ $singlepost['description'] }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">creater {{ $singlepost['description'] }}</h6>
+            <p class="card-title">{{ $singlepost['description'] }}</p>
+            <h3 class="card-subtitle mb-2 text-muted">creater {{ $singlepost['creater'] }}</h3>
             <p class="card-text">Created at: {{ $singlepost['created_at'] }}</p>
         </div>
     </div>

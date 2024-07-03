@@ -2,8 +2,9 @@
 
 @section('title') Edit Post @endsection
 
-@section('content')
+
 <div class="container mt-5">
+    @section('content')
     <h2>Edit Post</h2>
     <form method="POST" action="{{ route('post.update', $post->id) }}">
         @csrf
@@ -11,6 +12,7 @@
 
         <div class="mb-3">
             <label for="title" class="form-label">{{$post->id}}</label>
+
             <input type="text" class="form-control" id="title" placeholder="Enter Title" name="title" value="{{$post->title}}">
         </div>
 

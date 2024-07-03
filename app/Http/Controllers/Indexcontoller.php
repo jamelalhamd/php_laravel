@@ -93,14 +93,20 @@ public function update($id)
     $creater=request()->creater;
 
     $post = Post::findOrFail($id);
-    
+     
     // Update the post properties
-    $post->title = request()->title;
-    $post->description = request()->description;
-    $post->creater = request()->creater; // Ensure 'creator' is the correct column name
+    // $post->title = request()->title;
+    // $post->description = request()->description;
+    // $post->creater = request()->creater; // Ensure 'creator' is the correct column name
+    // $post->save();
 
+    $title=request()->title;
+    $description=request()->description;
+    $creater=request()->creater;
+
+    $post->update(['title'=>$title,'description'=>$description,'creater'=>$creater]);
     // Save the changes to the database
-    $post->save();
+ 
 
 
 
@@ -108,9 +114,12 @@ public function update($id)
    return to_route('post.show',$id);
 }
 
-public function delete()
+public function delete($id)
 {
+    $post = Post::findOrFail($id);
 
+    // Delete the post
+    $post->delete();
 
 
 
@@ -122,3 +131,4 @@ public function delete()
 
 
 }
+
