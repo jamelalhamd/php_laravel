@@ -46,8 +46,16 @@ return view('posts/create');
 
 }
 
+
+
 public function store()
 {
+    request()->validate([
+        'title' => 'required|string|max:255|min:3',
+        'description' => 'required|string|min:10',
+        'creater' => 'required|string|max:255|min:3',
+    
+    ]);
 
   $Post=new Post() ;
   $data=request()->all();
@@ -62,15 +70,12 @@ public function store()
 
 
 
-  
-
-
-
-  
-     
+   
 return to_route('post.index');
 
 }
+
+
 
 
 
@@ -121,7 +126,7 @@ public function delete($id)
     // Delete the post
     $post->delete();
 
-
+//Post::where('id',$id)->delete();
 
   return to_route('post.index');
 
