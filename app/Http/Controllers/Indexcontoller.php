@@ -90,7 +90,12 @@ public function edit($id )
 
 public function update($id)
 {
-
+    request()->validate([
+        'title' => 'required|string|max:255|min:3',
+        'description' => 'required|string|min:10',
+        'creater' => 'required|string|max:255|min:3',
+    
+    ]);
     
     $data=request()->all();
     $title=request()->title;
